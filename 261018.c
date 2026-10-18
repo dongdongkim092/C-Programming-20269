@@ -1,20 +1,117 @@
-#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS 
 #include <stdio.h>
 
-//Á¤¼öÀÇ ³ª´°¼À
+//ì‹¤ìŠµ 1
+void exerc1(void) {
+	int n, r, abs_r;
+	double  x;
+	x = 1.0;
+	printf("input n, r : ");
+	scanf("%d%d", &n, &r);
 
-int main(void) {
-    int a, b;
-    int quotient, remainder;
+	if (r < 0) abs_r = -r;
+	else abs_r = r;
 
-    printf("µÎ Á¤¼ö¸¦ ÀÔ·ÂÇÏ¼¼¿ä (a b): ");
-    scanf("%d %d", &a, &b);
+	for (int i = 0; i < abs_r; i++) {
+		x *= n;
+	}
+	if (r < 0) x = 1.0 / x;
 
-    quotient = a / b;
-    remainder = a % b;
+	printf("%dì˜ %dìŠ¹ì€ %lf ìž…ë‹ˆë‹¤.\n", n, r, x);
+}
+int main()
+{
+	exerc1();
+	return 0;
+}
 
-    printf("¸ò: %d\n", quotient);
-    printf("³ª¸ÓÁö: %d\n", remainder);
+//ì‹¤ìŠµ 2
 
+void exerc2(void) {
+	int n, result;
+	result = 1;
+	printf("input n : ");
+	scanf("%d", &n);
+	for (int i = n; i > 0; i--) result *= i;
+	printf("%d factorial = %dìž…ë‹ˆë‹¤.\n", n, result);
+}
+int main()
+{
+	exerc2();
+	return 0;
+}
+
+//ì‹¤ìŠµ 3
+
+void exerc3(void) {
+	int n;
+	int n_1, n_2, result;
+	n_2 = 0;
+	n_1 = 1;
+	printf("input n : ");
+	scanf("%d", &n);
+
+	if (n == 0) result = n_2;
+	else if (n == 1) result = n_1;
+	else {
+		for (int i = 2;i <= n;i++) {
+			result = n_1 + n_2;
+			n_2 = n_1;
+			n_1 = result;
+
+		}
+	}
+	printf("%d ë²ˆì§¸ì˜  ìˆ«ìžëŠ” %d ìž…ë‹ˆë‹¤.", n, result);
+}
+int main()
+{
+	exerc3();
+	return 0;
+}
+
+
+//ì‹¤ìŠµ 4
+
+void exerc4(void) {
+	int sum;
+	double avg;
+	int score;
+	int i = 0;
+	while (1) {
+		printf("input score : ");
+		scanf("%d", &score);
+		if (score == -1) break;
+		sum += score;
+		i++;
+	}
+	avg = sum / (double)i;
+	printf("avg = %lf\n", avg);
+}
+int main()
+{
+	exerc4();
+	return 0;
+}
+
+
+//ì‹¤ìŠµ 5
+
+void exerc5(void) {
+    char star = '*';
+    int line;
+    printf("input line : ");
+    scanf("%d", &line);
+    for (int i = 0;i < line;i++) {
+        int star_count = i * 2 + 1;
+        int space_count = line - i - 1;
+
+        for (int k = 0;k < space_count;k++) printf(" ");
+        for (int j = 0;j < star_count;j++) printf("%c", star);
+        printf("\n");
+    }
+}
+int main()
+{
+    exerc5();
     return 0;
 }
